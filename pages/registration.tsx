@@ -25,6 +25,15 @@ const Registration = () => {
     const databaseRef = collection(database, 'Personal Info');
     const router = useRouter()
 
+    const getData = async () => {
+      await getDocs(databaseRef)
+      .then((res) => {
+        setFireData(res.docs.map((data) =>{
+          return {...data.data(), id: data.id}
+        }));      
+      })
+    }
+
     useEffect(() => {
         const token = sessionStorage.getItem('Token')
         if (token) {
@@ -56,19 +65,8 @@ const Registration = () => {
         })
         .catch((err) => console.log(err)
         )
-      }
-
-      const getData = useCallback(() => {
-        async () => {
-          await getDocs(databaseRef)
-          .then((res) => {
-            setFireData(res.docs.map((data) =>{
-              return {...data.data(), id: data.id}
-            }));      
-          })
-        }
-      };
-        
+      }      
+    
       const getID = (id:any, name:any, job:any) => {
         setID(id)
         setName(name)
