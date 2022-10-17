@@ -23,7 +23,7 @@ const Home: NextPage = () => {
   
     const signUpWithEmail = () => {
       signInWithEmailAndPassword(auth, email, password)
-      .then((res) => {
+      .then((res:any) => {
         console.log(res.user);        
         sessionStorage.setItem('Token', res.user.accessToken);
         router.push('/registration')
