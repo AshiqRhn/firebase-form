@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from "firebase/firestore";
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { database } from "../firebase";
 
 const Registration = () => {
@@ -58,15 +58,17 @@ const Registration = () => {
         )
       }
 
-      const getData = async () => {
-        await getDocs(databaseRef)
-        .then((res) => {
-          setFireData(res.docs.map((data) =>{
-            return {...data.data(), id: data.id}
-          }));      
-        })
-      }
-    
+      const getData = useCallback(() => {
+        async () => {
+          await getDocs(databaseRef)
+          .then((res) => {
+            setFireData(res.docs.map((data) =>{
+              return {...data.data(), id: data.id}
+            }));      
+          })
+        }
+      };
+        
       const getID = (id:any, name:any, job:any) => {
         setID(id)
         setName(name)
