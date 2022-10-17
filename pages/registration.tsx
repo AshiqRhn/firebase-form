@@ -34,7 +34,7 @@ const Registration = () => {
           getData()
           router.push('/signup')
         }
-      }, [])
+      }, [getData])
 
       const submitHandler = (e) => {
         e.preventDefault()        

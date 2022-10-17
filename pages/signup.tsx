@@ -50,7 +50,7 @@ const SignUp = () => {
     if (token) {
       router.push('/registration')
     }
-  }, [])
+  }, [router])
 
   return (
     <div style={{minHeight:"100vh", marginTop: "100px"}}>

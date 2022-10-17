@@ -46,7 +46,7 @@ const Home: NextPage = () => {
         if (token) {
           router.push('/registration')
         }
-      }, [])
+      }, [router])
 
   const theme = createTheme();
 
