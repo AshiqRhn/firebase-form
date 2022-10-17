@@ -34,7 +34,7 @@ const Registration = () => {
         }));      
       })
       },
-      [],
+      [databaseRef],
     )   
    
     // const getData = async () => {
@@ -199,7 +199,7 @@ const Registration = () => {
         <Box>
         {fireData.map((data:any) => {
           return (
-            <div>             
+            <div key={data.id}>             
               <p>Name: {data.name}</p>
                 <p>Job: {data.job}</p>                   
 
