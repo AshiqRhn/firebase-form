@@ -13,13 +13,20 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from 'react';
 import { app } from "../firebase";
 
-const Home: NextPage = () => {   
+interface User {
+  accessToken?: string
+  name?: string
+  profession?: string 
+}
+
+const Home: React.FC<User> = (user:User) => {   
 
     const auth = getAuth(app);
     const googleProvider = new GoogleAuthProvider()  
     const router = useRouter();
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")  
+    
   
     const signUpWithEmail = () => {
       signInWithEmailAndPassword(auth, email, password)
