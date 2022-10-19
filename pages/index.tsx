@@ -13,13 +13,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from 'react';
 import { app } from "../firebase";
 
-interface User {
-  accessToken?: string
-  name?: string
-  profession?: string 
-}
-
-const Home: React.FC<User> = () => {   
+const Home: NextPage = () => {   
 
     const auth = getAuth(app);
     const googleProvider = new GoogleAuthProvider()  
@@ -31,8 +25,8 @@ const Home: React.FC<User> = () => {
     const signUpWithEmail = () => {
       signInWithEmailAndPassword(auth, email, password)
       .then((res:any) => {
-        console.log(res.user);        
-        sessionStorage.setItem('Token', res.user.accessToken);
+        console.log(res.User);        
+        sessionStorage.setItem('Token', res.User.accessToken);
         router.push('/registration')
         .catch((err) => {
           alert("Cannot Log in")
@@ -43,8 +37,8 @@ const Home: React.FC<User> = () => {
   const signUpWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
     .then((res:any) => {
-        console.log(res.user);
-        sessionStorage.setItem('Token', res.user.accessToken);
+        console.log(res.User);
+        sessionStorage.setItem('Token', res.User.accessToken);
         router.push('/registration')           
     })
     } 
