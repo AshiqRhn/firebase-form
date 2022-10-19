@@ -21,12 +21,14 @@ const Home: NextPage = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")  
     
-  
+    const user: any = {}
+    user.accessToken = googleProvider.providerId
+    
     const signUpWithEmail = () => {
       signInWithEmailAndPassword(auth, email, password)
       .then((res:any) => {
-        console.log(res.User);        
-        sessionStorage.setItem('Token', res.User.accessToken);
+        console.log(res.user);        
+        sessionStorage.setItem('Token', res.user.accessToken);
         router.push('/registration')
         .catch((err) => {
           alert("Cannot Log in")
@@ -37,8 +39,8 @@ const Home: NextPage = () => {
   const signUpWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
     .then((res:any) => {
-        console.log(res.User);
-        sessionStorage.setItem('Token', res.User.accessToken);
+        console.log(res.user);
+        sessionStorage.setItem('Token', res.user.accessToken);
         router.push('/registration')           
     })
     } 
