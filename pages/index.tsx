@@ -19,7 +19,7 @@ interface User {
   profession?: string 
 }
 
-const Home: React.FC<User> = (user:User) => {   
+const Home: React.FC<User> = () => {   
 
     const auth = getAuth(app);
     const googleProvider = new GoogleAuthProvider()  
