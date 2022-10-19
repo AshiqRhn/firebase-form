@@ -35,7 +35,7 @@ const Home: NextPage = () => {
 
   const signUpWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
-    .then((res) => {
+    .then((res:any) => {
         console.log(res.user);
         sessionStorage.setItem('Token', res.user.accessToken);
         router.push('/registration')           
