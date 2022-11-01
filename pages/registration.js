@@ -15,11 +15,11 @@ const Registration = () => {
 
     const [name, setName] = useState("")
     const [job, setJob] = useState("") 
-    // const [dob, setDob] = useState<any>(Date()) 
+    // const [dob, setDob] = useState(Date()) 
     // const [desc, setDesc] = useState("") 
     // const [loc, setLoc] = useState("") 
-    const [fireData, setFireData] = useState<any>([{}])
-    const [isUpdate, setIsUpdate] = useState<any>(false)
+    const [fireData, setFireData] = useState([{}])
+    const [isUpdate, setIsUpdate] = useState(false)
     const [ID, setID] = useState(null)
 
     const databaseRef = collection(database, 'Personal Info');
