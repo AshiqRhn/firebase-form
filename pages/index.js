@@ -7,13 +7,12 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from "next/router";
 import { useEffect, useState } from 'react';
 import { app } from "../firebase";
 
-const Home: NextPage = () => {   
+const Home = () => {   
 
     const auth = getAuth(app);
     const googleProvider = new GoogleAuthProvider()  
@@ -21,12 +20,9 @@ const Home: NextPage = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")  
     
-    const user: any = {}
-    user.accessToken = googleProvider.providerId
-    
     const signUpWithEmail = () => {
       signInWithEmailAndPassword(auth, email, password)
-      .then((res:any) => {
+      .then((res) => {
         console.log(res.user);        
         sessionStorage.setItem('Token', res.user.accessToken);
         router.push('/registration')
@@ -38,7 +34,7 @@ const Home: NextPage = () => {
 
   const signUpWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
-    .then((res:any) => {
+    .then((res) => {
         console.log(res.user);
         sessionStorage.setItem('Token', res.user.accessToken);
         router.push('/registration')           

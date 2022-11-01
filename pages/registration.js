@@ -79,7 +79,7 @@ const Registration = () => {
         )
       }      
     
-      const getID = (id:any, name:any, job:any) => {
+      const getID = (id, name, job) => {
         setID(id)
         setName(name)
         setJob(job) 
@@ -197,7 +197,7 @@ const Registration = () => {
       </Container><br/>
       <Container component="main" maxWidth="md" style={{backgroundColor:'#f8f9fa', border: "1px solid #adb5bd", borderRadius: '10px',  boxShadow: "0 8px 10px -4px lightblue" }}>
         <Box>
-        {fireData.map((data:any) => {
+        {fireData.map((data) => {
           return (
             <div key={data.id}>             
               <p>Name: {data.name}</p>
